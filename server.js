@@ -1,9 +1,13 @@
 const express =require('express');
+const bodyparser = require('body-parser');
 require('dotenv').config();
 const mongoose = require('mongoose');
 
 
 const app = express();
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({extended:true}));
+
 
 
 const homeRoutes = require('./sr/routes/home.routes');
