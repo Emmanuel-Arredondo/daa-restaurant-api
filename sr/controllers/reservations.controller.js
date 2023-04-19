@@ -18,7 +18,7 @@ const createReservation = async(req,res,next)=>{
         return next(error);
     };
 }
-const getReservationById = async (req,res,next)=>{
+const getReservation = async (req,res,next)=>{
     try{
         const id = req.params.id;
         const reservation =await Reservation.findById(id);
@@ -27,7 +27,7 @@ const getReservationById = async (req,res,next)=>{
     return next(error);
 }};
 
-const updateReservationById = async (req,res,next)=>{
+const updateReservation = async (req,res,next)=>{
     try{
         const id = req.params.id;
         await Reservation.updateOne({_id:id},req.body);
@@ -36,7 +36,7 @@ const updateReservationById = async (req,res,next)=>{
         return next(error);
     }
 }
-const deleteReservationById = async (req,res,next)=>{
+const deleteReservation = async (req,res,next)=>{
     try{
     const id = req.params.id;
     await Reservation.findByIdAndDelete(id);
@@ -45,4 +45,4 @@ const deleteReservationById = async (req,res,next)=>{
     return next(error);
 }};
 
-module.exports = {getAllReservations,createReservation,getReservationById,updateReservationById,deleteReservationById};
+module.exports = {getAllReservations,createReservation,getReservation,updateReservation,deleteReservation};
