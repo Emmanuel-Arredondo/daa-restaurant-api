@@ -1,5 +1,6 @@
 const express =require('express');
 const bodyparser = require('body-parser');
+const cors=require('cors');
 require('dotenv').config();
 const mongoose = require('mongoose');
 
@@ -10,7 +11,7 @@ const firstUserUtils = require('./sr/utils/first-user.utils');
 const app = express();
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:true}));
-
+app.use(cors());
 
 
 const homeRoutes = require('./sr/routes/home.routes');
@@ -20,6 +21,7 @@ const usersRoutes = require('./sr/routes/users.routes');
 app.use('/',homeRoutes);
 app.use('/reservations',reservationsRoutes);    
 app.use('/users',usersRoutes);
+
 
 const main=async ()=>{
     try{
